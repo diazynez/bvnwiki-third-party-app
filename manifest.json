@@ -4,26 +4,32 @@
   "description": "死神VS火影维基百科",
   "lang": "cn",
   "categories": ["bvnwiki"],
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "https://diazynez.github.io/bvnwiki-third-party-app
+/",
+  "scope": "https://diazynez.github.io/bvnwiki-third-party-app
+/",
   "theme_color": "#000000",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "portrait",
   "icons": [{
-    "src": "/icon/16x16.png",
+    "src": "https://diazynez.github.io/bvnwiki-third-party-app
+//icon/16x16.png",
     "sizes": "16x16",
     "type": "image/png"
   }, {
-    "src": "/icon/32x32.png",
+    "src": "https://diazynez.github.io/bvnwiki-third-party-app
+//icon/32x32.png",
     "sizes": "32x32",
     "type": "image/png"
   }, {
-    "src": "/icon/128x128.png",
+    "src": "https://diazynez.github.io/bvnwiki-third-party-app
+//icon/128x128.png",
     "sizes": "128x128",
     "type": "image/png"
   }, {
-    "src": "/icon/512x512.png",
+    "src": "https://diazynez.github.io/bvnwiki-third-party-app
+//icon/512x512.png",
     "sizes": "512x512",
     "type": "image/png"
   }]
