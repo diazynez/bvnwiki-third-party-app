@@ -1,4 +1,5 @@
-importScripts('workbox-sw.min.js');
+importScripts('https://diazynez.github.io/bvnwiki-third-party-app
+/workbox-sw.min.js');
 
 if (workbox) {
     console.log("Yay! Workbox is loaded 🎉");
@@ -8,7 +9,8 @@ if (workbox) {
 
 var cacheFiles = [
     {
-        url: '/index.html',
+        url: 'https://diazynez.github.io/bvnwiki-third-party-app
+/index.html',
         revision: 'vbvnwiki4444' // 加revision，版本改了以後，sw.js 在 application 上會更新
     }
 ];
