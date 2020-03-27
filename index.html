@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>死神VS火影维基百科</title>
+    <meta charset="utf-8" />
+	<!--- 现代浏览器 -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/16x16.png" />
+	<!--- iOS -->
+	<link rel="apple-touch-icon" href="icon/16x16.png" />
+	<meta name="apple-mobile-web-app-title" content="死神VS火影维基百科" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<!--- IE/Edge -->
+	<meta name="application-name" content="死神VS火影维基百科" />
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-square16x16logo" content="icons/16x16.png" />
+	<meta name="msapplication-square32x32logo" content="icons/32x32.png" />
+	<meta name="msapplication-square128x128logo" content="icons/128x128.png" />
+	<meta name="msapplication-square512x512logo" content="icons/512x512.png" />
+    <style type="text/css">
+        html,body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        iframe {
+            margin: 0;
+            border-style: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnInstall" href="javascript:void(0);" aria-hidden="true" style="display: none">安装</button>
+    <iframe src="https://bvn.huijiwiki.com/wiki/Home"></iframe>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js" asp-fallback-test="window.jQuery"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.9/pwacompat.min.js"
+        integrity="sha384-VcI6S+HIsE80FVM1jgbd6WDFhzKYA0PecD/LcIyMQpT4fMJdijBh0I7Iblaacawc" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js').then(function () {
+            console.log('Service Worker 注册成功');
+        });
+    }
+    var dfdPrompt = null;
+    var btnInstall = $("#btnInstall");
+    $(function () {
+        window.addEventListener('beforeinstallprompt', function (e) {
+            // 存储事件
+            dfdPrompt = e;
+            // 显示按钮
+            btnInstall.show();
+            // 阻止默认事件
+            e.preventDefault();
+            return false;
+        });
+        btnInstall.on("click", function () {
+            if (dfdPrompt == null) {
+                return;
+            }
+            // 通过按钮点击事件触发横幅显示
+            dfdPrompt.prompt();
+            // 监控用户的安装行为
+            dfdPrompt.userChoice.then(function (choiceResult) {
+                if (choiceResult.outcome === 'accepted') {
+                    btnInstall.hide();
+                    dfdPrompt = null;
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
